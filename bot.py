@@ -16,8 +16,6 @@ def enviar (message):
 def enviar_start (message):
     bot.reply_to(message, "¡Muy bien comencemos! Espere un momento mientras creamos su base de datos")
 
-
-
 #try:
 #    conn = mariadb.connect(
 #        user="riopy",
