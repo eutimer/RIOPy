@@ -14,7 +14,7 @@ def enviar (message):
 
 @bot.message_handler(commands=["start"])
 def enviar_start (message):
-    bot.reply_to(message, "¡Muy bien comencemos! Espere un momento mientras creamos su base de datos")
+    bot.reply_to(message, "¡Muy bien comencemos! Espere 30 segundos mientras creamos su base de datos...")
 
 #Base de datos
 #try:
@@ -30,8 +30,10 @@ def enviar_start (message):
 #    print(f"Error connecting to MariaDB Platform: {e}")
 #    sys.exit(1)
 
-time.sleep(5)
-def mostrar (message):
+
+    time.sleep(15)
     bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta.")
+
+
 
 bot.polling()
