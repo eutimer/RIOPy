@@ -29,7 +29,7 @@ try:
 
     mycursor = mydb.cursor()
 
-    mycursor.execute("CREATE DATABASE " + user_input ";")
+    mycursor.execute("CREATE DATABASE " + user_input)
 
 
 except Error as e:
