@@ -5,6 +5,7 @@ import paramiko
 import mysql.connector
 from mysql.connector import Error
 
+username = update.message.chat.username
 TOKEN_BOT = "2013586678:AAF4hFdaWjokjVMUDredntgLTQi2OQWrO24"
 bot = telebot.TeleBot(TOKEN_BOT)
 @bot.message_handler(commands=["hola"])
@@ -15,7 +16,7 @@ def enviar (message):
 
 @bot.message_handler(commands=["start"])
 def enviar_start (message):
-    bot.reply_to(message, "¡Muy bien comencemos! Aplique un nombre a la base de datos y espere 30 segundos mientras creamos su base de datos: " + user_input = input(' '))
+    bot.reply_to(message, "¡Muy bien comencemos! Aplique un nombre a la base de datos y espere 30 segundos mientras creamos su base de datos: " + username)
 
 #Base de datos
     try:
@@ -28,7 +29,7 @@ def enviar_start (message):
 
         mycursor = mydb.cursor()
 
-        mycursor.execute("CREATE DATABASE " + user_input)
+        mycursor.execute("CREATE DATABASE " + username)
 
 
     except Error as e:
