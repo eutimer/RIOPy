@@ -5,7 +5,7 @@ import paramiko
 import mysql.connector
 from mysql.connector import Error
 
-user_input = "prueba"
+user_input = "prueba2"
 TOKEN_BOT = "2013586678:AAF4hFdaWjokjVMUDredntgLTQi2OQWrO24"
 bot = telebot.TeleBot(TOKEN_BOT)
 @bot.message_handler(commands=["hola"])
