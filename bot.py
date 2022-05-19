@@ -21,7 +21,7 @@ def get_var (message):
 
 @bot.message_handler(commands=["start"])
 def enviar_start (message):
-    bot.reply_to(message, "¡Muy bien comencemos! Aplique un nombre a la base de datos y espere 30 segundos mientras creamos su base de datos: " + var)
+    bot.reply_to(message, "¡Muy bien comencemos! Aplique un nombre a la base de datos y espere 30 segundos mientras creamos su base de datos")
 
 #Base de datos
 #    try:
@@ -43,6 +43,6 @@ def enviar_start (message):
 
 
     time.sleep(5)
-    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta.")
+    bot.reply_to(message, "Base de datos creada con el nombre de " + var + ", ya puede empezar a usar nuestra herramienta.")
 
 bot.polling()
