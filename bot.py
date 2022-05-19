@@ -11,7 +11,7 @@ TOKEN_BOT = "2013586678:AAF4hFdaWjokjVMUDredntgLTQi2OQWrO24"
 bot = telebot.TeleBot(TOKEN_BOT)
 @bot.message_handler(commands=["start"])
 def enviar (message):
-    bot.reply_to(message, "¡Bienvenido soy RIOPy!, un BOT diseñado para organizar tu PYME a tu gusto. Cuando hayas implementado el nombre escribe /crear y nos pondremos manos a la obra.")
+    bot.reply_to(message, "¡Bienvenido soy RIOPy!, un BOT diseñado para organizar tu PYME a tu gusto. Una vez hayas implementado el nombre escribe /crear y nos pondremos manos a la obra.")
     bot.send_message(message.from_user.id, "Dime el nombre de tu empresa: ");
     bot.register_next_step_handler(message, get_var);
 
