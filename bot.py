@@ -14,8 +14,8 @@ def enviar (message):
     bot.reply_to(message, "¡Bienvenido soy RIOPy!, un BOT diseñado para organizar tu PYME a tu gusto.")
     bot.send_message(message.from_user.id, "Dime el nombre de tu empresa: ");
     bot.register_next_step_handler(message, get_var);
-    bot.send_message(message, "Para empezar escribe /start y nos pondremos manos a la obra.")
-    
+    bot.reply_to(message, "Para empezar escribe /start y nos pondremos manos a la obra.")
+
 def get_var (message):
     global var;
     var = message.text;
