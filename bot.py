@@ -11,10 +11,9 @@ TOKEN_BOT = "2013586678:AAF4hFdaWjokjVMUDredntgLTQi2OQWrO24"
 bot = telebot.TeleBot(TOKEN_BOT)
 @bot.message_handler(commands=["hola"])
 def enviar (message):
-    bot.reply_to(message, "¡Bienvenido soy RIOPy!, un BOT diseñado para organizar tu PYME a tu gusto.")
+    bot.reply_to(message, "¡Bienvenido soy RIOPy!, un BOT diseñado para organizar tu PYME a tu gusto. Cuando hayas implementado el nombre escribe /start y nos pondremos manos a la obra.")
     bot.send_message(message.from_user.id, "Dime el nombre de tu empresa: ");
     bot.register_next_step_handler(message, get_var);
-    bot.reply_to(message, "Para empezar escribe /start y nos pondremos manos a la obra.")
 
 def get_var (message):
     global var;
@@ -22,7 +21,7 @@ def get_var (message):
 
 @bot.message_handler(commands=["start"])
 def enviar_start (message):
-    bot.reply_to(message, "¡Muy bien comencemos! Aplique un nombre a la base de datos y espere 30 segundos mientras creamos su base de datos")
+    bot.reply_to(message, "¡Muy bien comencemos! Aplique un nombre a la base de datos y espere 10 segundos mientras creamos su base de datos nombrada: " + var)
 
 #Base de datos
 #    try:
@@ -44,6 +43,6 @@ def enviar_start (message):
 
 
     time.sleep(5)
-    bot.reply_to(message, "Base de datos creada con el nombre de " + var + ", ya puede empezar a usar nuestra herramienta.")
+    bot.reply_to(message, "Base de datos creada con el nombre de, ya puede empezar a usar nuestra herramienta.")
 
 bot.polling()
