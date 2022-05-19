@@ -15,6 +15,9 @@ def enviar (message):
     bot.send_message(message.from_user.id, "Dime el nombre de tu empresa: ");
     bot.register_next_step_handler(message, get_var);
 
+def get_var (message):
+    global var;
+    var = message.text;
 
 @bot.message_handler(commands=["start"])
 def enviar_start (message):
