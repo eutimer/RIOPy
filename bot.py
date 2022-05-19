@@ -24,25 +24,25 @@ def enviar_start (message):
     bot.reply_to(message, "¡Muy bien comencemos! Espere 10 segundos mientras creamos su base de datos nombrada: " + var)
 
 #Base de datos
-#    try:
-#        mydb = mysql.connector.connect(
-#            host="10.152.183.197",
-#            port="3306",
-#            user="root",
-#            password="root"
-#            )
-#
-#        mycursor = mydb.cursor()
-#
-#        mycursor.execute("CREATE DATABASE " + user_input)
-#
-#
-#    except Error as e:
-#        print(f"Error connecting to MariaDB Platform: {e}")
-#        sys.exit(1)
+    try:
+        mydb = mysql.connector.connect(
+            host="10.152.183.197",
+            port="3306",
+            user="root",
+            password="root"
+            )
+
+        mycursor = mydb.cursor()
+
+        mycursor.execute("CREATE DATABASE " + var)
+
+
+    except Error as e:
+        print(f"Error connecting to MariaDB Platform: {e}")
+        sys.exit(1)
 
 
     time.sleep(5)
-    bot.reply_to(message, "Base de datos creada con el nombre de, ya puede empezar a usar nuestra herramienta.")
+    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta.")
 
 bot.polling()
