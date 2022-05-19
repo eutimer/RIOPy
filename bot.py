@@ -9,9 +9,9 @@ from mysql.connector import Error
 
 TOKEN_BOT = "2013586678:AAF4hFdaWjokjVMUDredntgLTQi2OQWrO24"
 bot = telebot.TeleBot(TOKEN_BOT)
-@bot.message_handler(commands=["hola"])
+@bot.message_handler(commands=["start"])
 def enviar (message):
-    bot.reply_to(message, "¡Bienvenido soy RIOPy!, un BOT diseñado para organizar tu PYME a tu gusto. Cuando hayas implementado el nombre escribe /start y nos pondremos manos a la obra.")
+    bot.reply_to(message, "¡Bienvenido soy RIOPy!, un BOT diseñado para organizar tu PYME a tu gusto. Cuando hayas implementado el nombre escribe /crear y nos pondremos manos a la obra.")
     bot.send_message(message.from_user.id, "Dime el nombre de tu empresa: ");
     bot.register_next_step_handler(message, get_var);
 
@@ -19,7 +19,7 @@ def get_var (message):
     global var;
     var = message.text;
 
-@bot.message_handler(commands=["start"])
+@bot.message_handler(commands=["crear"])
 def enviar_start (message):
     bot.reply_to(message, "¡Muy bien comencemos! Espere 10 segundos mientras creamos su base de datos nombrada: " + var)
 
