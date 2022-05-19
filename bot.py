@@ -21,7 +21,7 @@ def get_var (message):
 
 @bot.message_handler(commands=["start"])
 def enviar_start (message):
-    bot.reply_to(message, "¡Muy bien comencemos! Aplique un nombre a la base de datos y espere 10 segundos mientras creamos su base de datos nombrada: " + var)
+    bot.reply_to(message, "¡Muy bien comencemos! Espere 10 segundos mientras creamos su base de datos nombrada: " + var)
 
 #Base de datos
 #    try:
