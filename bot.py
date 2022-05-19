@@ -39,7 +39,7 @@ def enviar_start (message):
 #        sys.exit(1)
 
 
-    time.sleep(15)
-    bot.reply_to(message, "Base de datos creada " + get_var + ", ya puede empezar a usar nuestra herramienta.")
+    time.sleep(5)
+    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta.")
 
 bot.polling()
