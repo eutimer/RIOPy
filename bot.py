@@ -56,7 +56,7 @@ def get_dep (message):
     global dep;
     dep = message.text;
 
-    mycursor.execute("CREATE TABLE" + dep + "(FIRST_NAME CHAR (20) NOT NULL, LAST_NAME CHAR(20))"
+    mycursor.execute("CREATE TABL E" + dep + " (FIRST_NAME CHAR (20) NOT NULL, LAST_NAME CHAR(20))"
 
 
 bot.polling()
