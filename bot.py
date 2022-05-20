@@ -43,12 +43,22 @@ def enviar_start (message):
 
 
     time.sleep(5)
-    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta. (Temporalmente la herramienta no esta operativa, sentimos las molestias, usa /eliminar para quitar la base de datos).")
+    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta. Usa /departamento")
 
 @bot.message_handler(commands=["eliminar"])
 def crear_tabla(message):
-    bot.reply_to(message, "Su base de datos ha sido eliminada.")
-    mycursor.execute("DROP DATABASE " + var)
+    bot.reply_to(message, "Su base de datos ha sido eliminada")
+    bot.send_message(message.from_user.id, "Muy bien! Ahora dime uno de los departamento que vas a gestionar dentro de tu base de datos: ");
+    bot.register_next_step_handler(message, get_dep);
+
+def get_dep (message):
+    global dep;
+    dep = message.text;
+
+    mycursor.execute("USE " + var)
+    mycursor.execute("CREATE TABLE " + dep + "(NAME CHAR(20))")
+
+
 
 
 bot.polling()
