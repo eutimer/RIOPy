@@ -5,8 +5,16 @@ import paramiko
 import mysql.connector
 from mysql.connector import Error
 
+try:
+    mydb = mysql.connector.connect(
+        host="10.152.183.197",
+        port="3306",
+        user="root",
+        password="root"
+        )
 
-
+    mycursor = mydb.cursor()
+    
 TOKEN_BOT = "2013586678:AAF4hFdaWjokjVMUDredntgLTQi2OQWrO24"
 bot = telebot.TeleBot(TOKEN_BOT)
 @bot.message_handler(commands=["start"])
@@ -24,22 +32,14 @@ def enviar_start (message):
     bot.reply_to(message, "¡Muy bien comencemos! Espere 10 segundos mientras creamos su base de datos nombrada: " + var)
 
 #Base de datos
-    try:
-        mydb = mysql.connector.connect(
-            host="10.152.183.197",
-            port="3306",
-            user="root",
-            password="root"
-            )
 
-        mycursor = mydb.cursor()
+
+
 
         mycursor.execute("CREATE DATABASE " + var)
 
 
-    except Error as e:
-        print(f"Error connecting to MariaDB Platform: {e}")
-        sys.exit(1)
+
 
 
     time.sleep(5)
@@ -59,5 +59,8 @@ def get_dep (message):
 
     mycursor.execute("CREATE TABLE " + dep + "(FIRST_NAME CHAR(20))")
 
+except Error as e:
+    print(f"Error connecting to MariaDB Platform: {e}")
+    sys.exit(1)
 
 bot.polling()
