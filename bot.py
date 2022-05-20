@@ -43,12 +43,13 @@ def enviar_start (message):
 
 
     time.sleep(5)
-    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta.")
+    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta. Usa /departamento")
 
     mycursor.execute("USE " + var)
 
 @bot.message_handler(commands=["departamento"])
 def crear_tabla(message):
+    bot.reply_to(message, "Muy bien empezemos.")
     bot.send_message(message, "Muy bien! Ahora dime uno de los departamento que vas a gestionar dentro de tu base de datos: ");
     bot.register_next_step_handler(message, get_dep);
 
