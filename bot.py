@@ -45,4 +45,18 @@ def enviar_start (message):
     time.sleep(5)
     bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta.")
 
+    mycursor.execute("USE " + var)
+
+@bot.message_handler(commands=["departamento"])
+def crear_tabla(message):
+    bot.send_message(message, "Muy bien! Ahora dime uno de los departamento que vas a gestionar dentro de tu base de datos: ");
+    bot.register_next_step_handler(message, get_dep);
+
+def get_dep (message):
+    global dep;
+    dep = message.text;
+
+    mycursor.execute("CREATE TABLE" + dep + "(FIRST_NAME CHAR (20) NOT NULL, LAST_NAME CHAR(20))"
+
+
 bot.polling()
