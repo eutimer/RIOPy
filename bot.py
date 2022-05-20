@@ -43,7 +43,12 @@ def enviar_start (message):
 
 
     time.sleep(5)
-    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta. (Temporalmente la herramienta no esta operativa, sentimos las molestias).")
+    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta. (Temporalmente la herramienta no esta operativa, sentimos las molestias, usa /eliminar para quitar la base de datos).")
+
+@bot.message_handler(commands=["eliminar"])
+def crear_tabla(message):
+    bot.reply_to(message, "Su base de datos ha sido eliminada.")
+    mycursor.execute("DROP DATABASE " + var)
 
 
 bot.polling()
