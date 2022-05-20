@@ -55,24 +55,8 @@ def get_dep (message):
     global dep;
     dep = message.text;
 
-    try:
-        mydb = mysql.connector.connect(
-            host="10.152.183.197",
-            port="3306",
-            user="root",
-            password="root"
-            )
-
-        mycursor = mydb.cursor()
-
         mycursor.execute("USE " + var)
         mycursor.execute("CREATE TABLE " + dep + "(NAME CHAR(20));")
-
-        except Error as e:
-            print(f"Error connecting to MariaDB Platform: {e}")
-            sys.exit(1)
-
-
 
 
 bot.polling()
