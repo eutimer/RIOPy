@@ -50,7 +50,7 @@ def enviar_start (message):
 @bot.message_handler(commands=["departamento"])
 def crear_tabla(message):
     bot.reply_to(message, "Muy bien empezemos.")
-    bot.send_message(message, "Muy bien! Ahora dime uno de los departamento que vas a gestionar dentro de tu base de datos: ");
+    bot.send_message(message.from_user.id, "Muy bien! Ahora dime uno de los departamento que vas a gestionar dentro de tu base de datos: ");
     bot.register_next_step_handler(message, get_dep);
 
 def get_dep (message):
