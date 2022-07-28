@@ -7,33 +7,36 @@ from mysql.connector import Error
 
 
 
-TOKEN_BOT = "2013586678:AAF4hFdaWjokjVMUDredntgLTQi2OQWrO24"
+# TOKEN_BOT = "Your telegram bot token here"
 bot = telebot.TeleBot(TOKEN_BOT)
 @bot.message_handler(commands=["start"])
 def enviar (message):
-    bot.reply_to(message, "¡Bienvenido soy RIOPy!, un BOT diseñado para organizar tu PYME a tu gusto. Una vez hayas implementado el nombre, escribe /crear y nos pondremos manos a la obra.")
-    bot.send_message(message.from_user.id, "Dime el nombre de tu empresa: ");
+    bot.reply_to(message, "Bot message!")
+    bot.send_message(message.from_user.id, "Tell him name: ");
     bot.register_next_step_handler(message, get_var);
-
+# Get value from user text message 
 def get_var (message):
     global var;
     var = message.text;
 
-@bot.message_handler(commands=["crear"])
+@bot.message_handler(commands=["create"])
 def enviar_start (message):
-    bot.reply_to(message, "¡Muy bien comencemos! Espere 10 segundos mientras creamos su base de datos nombrada: " + var)
+    # Set value was saved in bot message
+    bot.reply_to(message, "Creating data base: " + var)
 
-#Base de datos
+# Database connection
     try:
         mydb = mysql.connector.connect(
-            host="10.152.183.197",
+            # Apply your host here, example:
+            # host="192.168.x.x",
             port="3306",
             user="root",
             password="root"
             )
 
         mycursor = mydb.cursor()
-
+        
+# Query to create database
         mycursor.execute("CREATE DATABASE " + var)
 
 
@@ -41,9 +44,9 @@ def enviar_start (message):
         print(f"Error connecting to MariaDB Platform: {e}")
         sys.exit(1)
 
-
+# Wit 5 seconds to show message
     time.sleep(5)
-    bot.reply_to(message, "Base de datos creada, ya puede empezar a usar nuestra herramienta. (Temporalmente esta herramienta continua en desarollo, sentimos las molestias).")
+    bot.reply_to(message, "Confirmation message database is created")
 
 
 bot.polling()
